@@ -18,6 +18,7 @@ jobs:
           daocloud.io
           mirror.baidubce.com
           reg.qiniu.com
+          docker.io
           docker.mirrors.ustc.edu.cn
           registry.docker-cn.com
           dockerhub.azk8s.cn
@@ -27,9 +28,9 @@ jobs:
           do
              docker pull $registry/$image \
                && (echo -e "\033[32m$registry is good\033[0m" \
-                  ; echo "::info file=README.md,line=1,col=0::OK [ $registry ] is good") \
+                  ; echo "::warning file=README.md,line=1,col=0::##OK [ $registry ] is good") \
                || (echo -e "\033[31m$registry is outdated\033[0m" \
-                  ; echo "::error file=README.md,line=1,col=0::X [ $registry ] is outdated")
+                  ; echo "::error file=README.md,line=1,col=0::##X [ $registry ] is outdated")
              docker rmi $registry/$image || true
           done
         env:
