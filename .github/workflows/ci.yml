@@ -3,16 +3,15 @@ on:
   schedule:
     - cron: '0 0 */1 * *'
 
-name: Test Registry
+name: Docker Registry Test
 
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: docker-practice/actions-setup-docker@master
       - run: docker version
       - run: docker info
-      - name: Test
+      - name: Docker Registry Test
         run: |
           registrys="
           ${ALIYUN_MIRROR}.mirror.aliyuncs.com
@@ -28,7 +27,7 @@ jobs:
           do
              docker pull $registry/$image \
                && (echo -e "\033[32m$registry is good\033[0m" \
-                  ; echo "::warning file=README.md,line=1,col=0::OK [ $registry ] is good") \
+                  ; echo "::info file=README.md,line=1,col=0::OK [ $registry ] is good") \
                || (echo -e "\033[31m$registry is outdated\033[0m" \
                   ; echo "::error file=README.md,line=1,col=0::X [ $registry ] is outdated")
              docker rmi $registry/$image || true
