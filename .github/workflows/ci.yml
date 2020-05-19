@@ -23,7 +23,7 @@ jobs:
           registry.docker-cn.com
           dockerhub.azk8s.cn
           "
-          image="nginx:1.18"
+          image="library/nginx:1.18"
           for registry in $registrys
           do
              docker pull $registry/$image \
