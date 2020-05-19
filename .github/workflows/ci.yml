@@ -15,9 +15,9 @@ jobs:
         run: |
           registrys="
           ${ALIYUN_MIRROR}.mirror.aliyuncs.com
-          ${DAO_CLOUD_MIRROR}.m.daocloud.io
+          daocloud.io
           mirror.baidubce.com
-          reg-mirror.qiniu.com
+          reg.qiniu.com
           docker.mirrors.ustc.edu.cn
           registry.docker-cn.com
           dockerhub.azk8s.cn
@@ -34,4 +34,3 @@ jobs:
           done
         env:
           ALIYUN_MIRROR: ${{secrets.ALIYUN_MIRROR}}
-          DAO_CLOUD_MIRROR: ${{secrets.DAO_CLOUD_MIRROR}}
