@@ -15,13 +15,13 @@ jobs:
       - name: Test
         run: |
           registrys="
-          docker.io
-          registry-1.docker.io
-          mirror.baidubce.com
-          hub-mirror.c.163.com
-          docker.mirrors.ustc.edu.cn
-          mirror.gcr.io
           $ALIYUN_MIRROR
+          $DAO_CLOUD_MIRROR
+          https://mirror.baidubce.com
+          https://reg-mirror.qiniu.com
+          https://docker.mirrors.ustc.edu.cn
+          https://registry.docker-cn.com
+          https://dockerhub.azk8s.cn
           "
           image="library/nginx:1.18.0-alpine"
           for registry in $registrys
@@ -35,3 +35,4 @@ jobs:
           done
         env:
           ALIYUN_MIRROR: ${{secrets.ALIYUN_MIRROR}}
+          DAO_CLOUD_MIRROR: ${{secrets.DAO_CLOUD_MIRROR}}
