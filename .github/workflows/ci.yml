@@ -18,7 +18,6 @@ jobs:
           mirror.baidubce.com
           ${HUAWEI_MIRROR}.mirror.swr.myhuaweicloud.com
           docker.io
-          docker.mirrors.ustc.edu.cn
           "
           image="library/nginx:1.18"
           for registry in $registrys
